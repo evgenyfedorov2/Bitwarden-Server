@@ -15,11 +15,11 @@ jobs:
       - name: Login to Azure
         uses: Azure/login@1f63701bf3e6892515f1b7ce2d2bf1708b46beaf
         with:
-          creds: ${{ secrets.AZURE_PROD_KV_CREDENTIALS }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Purge images
         env:
-          REGISTRY: bitwardenprod
+          REGISTRY: bitwardenyudinetz
           AGO_DUR_VER: "180d"
           AGO_DUR: "30d"
         run: |
@@ -89,7 +89,7 @@ jobs:
         uses: Azure/login@1f63701bf3e6892515f1b7ce2d2bf1708b46beaf
         if: failure()
         with:
-          creds: ${{ secrets.AZURE_PROD_KV_CREDENTIALS }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Retrieve secrets
         id: retrieve-secrets
